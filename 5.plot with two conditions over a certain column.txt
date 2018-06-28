@@ -1,0 +1,14 @@
+#We can use two conditions to generate a grid of plots, each containing a subset of the data with a unique combination of each condition. When creating a FacetGrid, we use the row parameter to specify the column in the dataframe we want used to subset across the rows in the grid. The best way to understand this is to see a working example.
+
+# The starter code subsets the dataframe on different combinations of unique values in both the Pclass and Survived columns. Try changing the conditions to see the resulting plots
+
+
+# meletame os pros tin stili Pclass kai theloyme na sigrinoume
+# gia kathe klasi ti ginete stin parametro Survived
+# episis afto ginete map os pros tin ilikia axonas x
+
+
+g = sns.FacetGrid(titanic, col="Survived", row="Pclass")
+g.map(sns.kdeplot, "Age", shade=True)
+sns.despine(left=True, bottom=True)
+plt.show()

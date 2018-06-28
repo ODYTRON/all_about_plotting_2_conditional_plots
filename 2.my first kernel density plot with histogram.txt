@@ -1,0 +1,44 @@
+# import pandas
+import pandas as pd
+# import sns
+import seaborn as sns # seaborn is commonly imported as `sns`
+# import pyplot from matplotlib
+import matplotlib.pyplot as plt
+
+# read the dataframe
+titanic_all = pd.read_csv('train.csv')
+
+
+############################################################################################################
+
+# Under the hood, seaborn creates a histogram using matplotlib, scales the axes values, and styles it. In addition, seaborn uses a technique called kernel density estimation, or KDE for short, to create a smoothed line chart over the histogram. If you're interested in learning about how KDE works, you can read more on Wikipedia.
+
+# What you need to know for now is that the resulting line is a smoother version of the histogram, called a kernel density plot. Kernel density plots are especially helpful when we're comparing distributions, which we'll explore later in this mission. When viewing a histogram, our visual processing systems influence us to smooth out the bars into a continuous line.
+
+############################################################################################################
+
+# indicate what columns you want 
+titanic_specific_cols = ["Survived","Pclass", "Sex","Age","SibSp","Parch","Fare","Embarked"]
+
+# include only them in your data
+titanic = titanic_all[titanic_specific_cols]
+
+# print the first 5
+titanic.head()
+
+# drop rows containing missing values
+
+# you can always compare the situation before and after
+# .shape[0] rows
+# .shape[1] cols
+# and do the same for the cleaned data
+
+titanic = titanic.dropna()
+
+# Use the function seaborn.distplot() for column Age 
+sns.distplot(titanic["Age"])
+
+# show the histogram with the kernel density plot 
+plt.show()
+
+
